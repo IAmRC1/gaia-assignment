@@ -6,18 +6,11 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { FileRoute, useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 
-const defaultTheme = createTheme();
-
-export const Route = new FileRoute('/').createRoute({
-  component: Register,
-})
-
-export default function Register() {
+export const component = function Index() {
   const navigate = useNavigate()
   const registrationSchema = Yup.object().shape({
     name: Yup.string()
@@ -64,7 +57,6 @@ export default function Register() {
   });
 
   return (
-    <ThemeProvider theme={defaultTheme}>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <Box
@@ -155,6 +147,5 @@ export default function Register() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
   );
 }
